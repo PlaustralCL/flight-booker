@@ -40,17 +40,18 @@ end
 def create_flights(flight_data, departure_airport)
   seconds_in_hour = 3600
   flight_data.each do |airport, flight_time|
-    next if airport == "Airport_code"
+    next if airport == "Airport_code" || flight_time.to_f == 0
 
-    departure_time = Time.new(2022, 4, 28, rand(5..22), rand(59))
-    arrival_airport = Airport.where("code = ?", airport).first.id
-    arrival_time = departure_time + flight_time.to_f * seconds_in_hour
-    Flight.create(departure_airport_id: departure_airport,
-                  arrival_airport_id: arrival_airport,
-                  departure_time: departure_time,
-                  arrival_time: arrival_time)
+    3.times do
+      departure_time = Time.new(2022, 4, 28, rand(5..22), rand(59))
+      arrival_airport = Airport.where("code = ?", airport).first.id
+      arrival_time = departure_time + flight_time.to_f * seconds_in_hour
+      Flight.create(departure_airport_id: departure_airport,
+                    arrival_airport_id: arrival_airport,
+                    departure_time: departure_time,
+                    arrival_time: arrival_time)
+    end
   end
-
 end
 
 seed_airports
