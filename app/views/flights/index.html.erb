@@ -1,0 +1,48 @@
+<div class="section">
+  <div class="container">
+      <div class="columns is-mobile is-centered">
+        <div class="column is-half">
+          <h1 class="title is-1">Flight index</h1>
+
+          <%= form_with model: @flights, method: :get do |form| %>
+
+
+            <div class="field">
+              <%= form.label :departure_airport_id, "Origin", class: "label" %>
+              <div class="select">
+                <%= form.select(:departure_airport_id, options_for_select(@airport_options)) %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= form.label :arrival_airport_id, "Destination", class: "label" %>
+              <div class="select">
+                <%= form.select(:arrival_airport_id, options_for_select(@airport_options)) %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= form.label :passengers, "Number of passengers", class: "label" %>
+              <div class="select">
+                <%= form.select :passengers, [1, 2, 3, 4] %>
+              </div>
+            </div>
+
+              <div class="field">
+                <%= form.label :travel_date, "Travel date", class: "label" %>
+                <%= form.date_field :travel_date, class: "select" %>
+
+              </div>
+
+
+            <div class="control"><%= form.submit class: "button" %></div>
+
+          <div>
+
+          <% end %>
+
+
+        </div>
+      </div>
+  </div>
+</div>
