@@ -7,40 +7,54 @@
           <%= form_with model: @flights, method: :get do |form| %>
 
 
-            <div class="field">
-              <%= form.label :departure_airport_id, "Origin", class: "label" %>
-              <div class="select">
-                <%= form.select(:departure_airport_id, options_for_select(@airport_options)) %>
+            <div class="level has-text-centered">
+              <div class="level-item">
+                <div class="field">
+                  <%= form.label :departure_airport_id, "Origin", class: "label" %>
+                  <div class="select">
+                    <%= form.select(:departure_airport_id, options_for_select(@airport_options)) %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-item">
+                <div class="field">
+                  <%= form.label :arrival_airport_id, "Destination", class: "label" %>
+                  <div class="select">
+                    <%= form.select(:arrival_airport_id, options_for_select(@airport_options)) %>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="field">
-              <%= form.label :arrival_airport_id, "Destination", class: "label" %>
-              <div class="select">
-                <%= form.select(:arrival_airport_id, options_for_select(@airport_options)) %>
+            <div class="level has-text-centered">
+              <div class="level-item">
+                <div class="field">
+                  <%= form.label :passengers, "Number of passengers", class: "label" %>
+                  <div class="select">
+                    <%= form.select :passengers, [1, 2, 3, 4] %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="level-item">
+                <div class="field">
+                  <%= form.label :travel_date, "Travel date", class: "label" %>
+                  <%= form.date_field :travel_date, class: "select" %>
+                </div>
               </div>
             </div>
 
-            <div class="field">
-              <%= form.label :passengers, "Number of passengers", class: "label" %>
-              <div class="select">
-                <%= form.select :passengers, [1, 2, 3, 4] %>
-              </div>
+
+            <div class="control">
+              <%= form.submit class: "button" %>
             </div>
-
-              <div class="field">
-                <%= form.label :travel_date, "Travel date", class: "label" %>
-                <%= form.date_field :travel_date, class: "select" %>
-
-              </div>
-
-
-            <div class="control"><%= form.submit class: "button" %></div>
-
-          <div>
 
           <% end %>
 
+          <div>
+            <p><%= @flight_info %></p>
+          </div>
 
         </div>
       </div>
