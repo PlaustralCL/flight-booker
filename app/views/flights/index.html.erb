@@ -12,7 +12,7 @@
                   <div class="field">
                     <%= form.label :departure_airport_id, "Origin", class: "label" %>
                     <div class="select">
-                      <%= form.select(:departure_airport_id, options_for_select(@airport_options), prompt: "Select Departure Airport") %>
+                      <%= form.select(:departure_airport_id, options_for_select(@airport_options, @selected_airports[:departure_airport_id])) %>
                     </div>
                   </div>
                 </div>
@@ -20,7 +20,7 @@
                   <div class="field">
                     <%= form.label :arrival_airport_id, "Destination", class: "label" %>
                     <div class="select">
-                      <%= form.select(:arrival_airport_id, options_for_select(@airport_options), prompt: "Select Destination Airport") %>
+                      <%= form.select(:arrival_airport_id, options_for_select(@airport_options, @selected_airports[:arrival_airport_id])) %>
                     </div>
                   </div>
                 </div>
