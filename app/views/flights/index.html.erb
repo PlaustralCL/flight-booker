@@ -4,56 +4,74 @@
         <div class="column is-half">
           <h1 class="title is-1">Flight index</h1>
 
-          <%= form_with model: @flights, method: :get do |form| %>
-
-
-            <div class="level has-text-centered">
-              <div class="level-item">
-                <div class="field">
-                  <%= form.label :departure_airport_id, "Origin", class: "label" %>
-                  <div class="select">
-                    <%= form.select(:departure_airport_id, options_for_select(@airport_options)) %>
+          <div class="section">
+            <%= form_with model: @flights, method: :get do |form| %>
+              <h2 class="title is-2">Search Flights</h2>
+              <div class="level has-text-centered">
+                <div class="level-item">
+                  <div class="field">
+                    <%= form.label :departure_airport_id, "Origin", class: "label" %>
+                    <div class="select">
+                      <%= form.select(:departure_airport_id, options_for_select(@airport_options)) %>
+                    </div>
+                  </div>
+                </div>
+                <div class="level-item">
+                  <div class="field">
+                    <%= form.label :arrival_airport_id, "Destination", class: "label" %>
+                    <div class="select">
+                      <%= form.select(:arrival_airport_id, options_for_select(@airport_options)) %>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div class="level-item">
-                <div class="field">
-                  <%= form.label :arrival_airport_id, "Destination", class: "label" %>
-                  <div class="select">
-                    <%= form.select(:arrival_airport_id, options_for_select(@airport_options)) %>
+              <div class="level has-text-centered">
+                <div class="level-item">
+                  <div class="field">
+                    <%= form.label :passengers, "Number of passengers", class: "label" %>
+                    <div class="select">
+                      <%= form.select :passengers, [1, 2, 3, 4] %>
+                    </div>
+                  </div>
+                </div>
+                <div class="level-item">
+                  <div class="field">
+                    <%= form.label :travel_date, "Travel date", class: "label" %>
+                    <%= form.date_field :travel_date, class: "select" %>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="level has-text-centered">
-              <div class="level-item">
-                <div class="field">
-                  <%= form.label :passengers, "Number of passengers", class: "label" %>
-                  <div class="select">
-                    <%= form.select :passengers, [1, 2, 3, 4] %>
-                  </div>
-                </div>
+              <div class="control">
+                <%= form.submit class: "button" %>
               </div>
+            <% end %>
+          </div>
 
-              <div class="level-item">
-                <div class="field">
-                  <%= form.label :travel_date, "Travel date", class: "label" %>
-                  <%= form.date_field :travel_date, class: "select" %>
-                </div>
-              </div>
-            </div>
+          <div class="section">
+            <% if !@flight_info.empty? %>
+              <h2 class="title is-2">Available Flights</h2>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Origin</th>
+                    <th>Departure Time</th>
+                    <th>Destination</th>
+                    <th>Arrival Time</th>
+                  </tr>
+                </thead>
 
-
-            <div class="control">
-              <%= form.submit class: "button" %>
-            </div>
-
-          <% end %>
-
-          <div>
-            <p><%= @flight_info %></p>
+                <tbody>
+                    <% @flight_info.each do |flight| %>
+                      <tr>
+                        <td><%= flight.departure_airport_id %></td>
+                        <td><%= flight.departure_time.localtime.strftime("%H:%M %p") %></td>
+                        <td><%= flight.arrival_airport_id %></td>
+                        <td><%= flight.arrival_time.localtime.strftime("%H:%M %p") %></td>
+                      </tr>
+                    <% end %>
+                </tbody>
+              </table>
+            <% end %>
           </div>
 
         </div>
