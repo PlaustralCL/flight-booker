@@ -9,6 +9,10 @@ class FlightsController < ApplicationController
   private
 
   def available_flights
-    Flight.where("departure_airport_id = ?", params[:flight][:departure_airport_id]).and(Flight.where("arrival_airport_id = ?", params[:flight][:arrival_airport_id])).order(:departure_time)
+    if params[:flight][:departure_airport_id] == params[:flight][:arrival_airport_id]
+      ""
+    else
+      Flight.where("departure_airport_id = ?", params[:flight][:departure_airport_id]).and(Flight.where("arrival_airport_id = ?", params[:flight][:arrival_airport_id])).order(:departure_time)
+    end
   end
 end
