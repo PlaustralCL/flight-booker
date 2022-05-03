@@ -63,9 +63,9 @@
                 <tbody>
                     <% @search_results.each do |flight| %>
                       <tr>
-                        <td><%= flight.departure_airport_id %></td>
+                        <td><%= flight.departure_airport.code %></td>
                         <td><%= flight.departure_time.localtime.strftime("%H:%M %p") %></td>
-                        <td><%= flight.arrival_airport_id %></td>
+                        <td><%= flight.arrival_airport.code %></td>
                         <td><%= flight.arrival_time.localtime.strftime("%H:%M %p") %></td>
                       </tr>
                     <% end %>
@@ -73,7 +73,7 @@
               </table>
             <% end %>
           </div>
-<p><%= @search_criteria %></p>
+
         </div>
       </div>
   </div>
