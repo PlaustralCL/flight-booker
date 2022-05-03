@@ -12,7 +12,7 @@
                   <div class="field">
                     <%= form.label :departure_airport_id, "Origin", class: "label" %>
                     <div class="select">
-                      <%= form.select(:departure_airport_id, options_for_select(@airport_options, @search_criteria[:departure_airport_id])) %>
+                      <%= form.select(:departure_airport_id, options_for_select(@airport_options, @search_criteria[:departure_airport_id]), required: true) %>
                     </div>
                   </div>
                 </div>
@@ -20,7 +20,7 @@
                   <div class="field">
                     <%= form.label :arrival_airport_id, "Destination", class: "label" %>
                     <div class="select">
-                      <%= form.select(:arrival_airport_id, options_for_select(@airport_options, @search_criteria[:arrival_airport_id])) %>
+                      <%= form.select(:arrival_airport_id, options_for_select(@airport_options, @search_criteria[:arrival_airport_id]), required: true) %>
                     </div>
                   </div>
                 </div>
@@ -30,14 +30,14 @@
                   <div class="field">
                     <%= form.label :passengers, "Number of passengers", class: "label" %>
                     <div class="select">
-                      <%= form.select(:passengers, options_for_select([1, 2, 3, 4], @search_criteria[:passengers])) %>
+                      <%= form.select(:passengers, options_for_select([1, 2, 3, 4], @search_criteria[:passengers]), required: true) %>
                     </div>
                   </div>
                 </div>
                 <div class="level-item">
                   <div class="field">
                     <%= form.label :travel_date, "Travel date", class: "label" %>
-                    <%= form.date_field :travel_date, class: "select", value: @search_criteria[:travel_date] %>
+                    <%= form.date_field :travel_date, class: "select", value: @search_criteria[:travel_date], required: true %>
                   </div>
                 </div>
               </div>
