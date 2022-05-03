@@ -2,14 +2,16 @@ class FlightsController < ApplicationController
   def index
     @airport_options = Airport.all.order(:code).map { |airport| [airport.code, airport.id] }
     @flights = Flight.new
-    @flight_info = params[:flight].present? ? available_flights : ""
-    @selected_airports = target_aiports
+    @search_results = available_flights
+    @search_criteria = search_criteria
   end
 
 
   private
 
   def available_flights
+    return "" unless params[:flight].present?
+
     if (params[:flight][:departure_airport_id] == params[:flight][:arrival_airport_id]) || params[:flight][:departure_airport_id] == "" || params[:flight][:arrival_airport_id] == ""
       ""
     else
@@ -18,11 +20,11 @@ class FlightsController < ApplicationController
     end
   end
 
-  def target_aiports
+  def search_criteria
     if params[:flight].present?
-      { departure_airport_id: params[:flight][:departure_airport_id], arrival_airport_id: params[:flight][:arrival_airport_id] }
+      params[:flight]
     else
-      { departure_airport_id: "1", arrival_airport_id: "4"}
+      { departure_airport_id: "1", arrival_airport_id: "4", passengers: "1", travel_date: Date.today.strftime("%F") }
     end
   end
 end
