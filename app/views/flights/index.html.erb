@@ -47,32 +47,7 @@
             <% end %>
           </div>
 
-          <div class="section">
-            <% unless @search_results.empty? %>
-              <h2 class="title is-2">Available Flights</h2>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Origin</th>
-                    <th>Departure Time</th>
-                    <th>Destination</th>
-                    <th>Arrival Time</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                    <% @search_results.each do |flight| %>
-                      <tr>
-                        <td><%= flight.departure_airport.code %></td>
-                        <td><%= flight.departure_time.localtime.strftime("%H:%M %p") %></td>
-                        <td><%= flight.arrival_airport.code %></td>
-                        <td><%= flight.arrival_time.localtime.strftime("%H:%M %p") %></td>
-                      </tr>
-                    <% end %>
-                </tbody>
-              </table>
-            <% end %>
-          </div>
+          <%= render "search_results" %>
 
         </div>
       </div>
