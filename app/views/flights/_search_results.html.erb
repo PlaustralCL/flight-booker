@@ -1,4 +1,6 @@
 <div class="section">
+  <%= form_with url: new_booking_path, method: :get do |form| %>
+    <%= hidden_field_tag "passengers", @search_criteria[:passengers] %>
     <h2 class="title is-2">Available Flights</h2>
     <table class="table">
       <thead>
@@ -21,4 +23,8 @@
           <% end %>
       </tbody>
     </table>
+
+    <%= form.submit "Book flight", class: "button" %>
+  <% end %>
+
 </div>
