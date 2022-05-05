@@ -11,7 +11,8 @@ class Flight < ApplicationRecord
     if (params[:flight][:departure_airport_id] == params[:flight][:arrival_airport_id])
       ""
     else
-      Flight.where("departure_airport_id = ?", params[:flight][:departure_airport_id])
+      Flight.includes(:departure_airport, :arrival_airport)
+            .where("departure_airport_id = ?", params[:flight][:departure_airport_id])
             .where("arrival_airport_id = ?", params[:flight][:arrival_airport_id])
             .order(:departure_time)
     end
