@@ -2,29 +2,19 @@
   <%= form_with url: new_booking_path, method: :get do |form| %>
     <%= hidden_field_tag "passengers", @search_criteria[:passengers] %>
     <h2 class="title is-2">Available Flights</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Origin</th>
-          <th>Departure Time</th>
-          <th>Destination</th>
-          <th>Arrival Time</th>
-        </tr>
-      </thead>
+    <% @search_results.each do |flight| %>
+      <div class="control">
+        <div class="media">
+          <div class="media-left"><%= form.radio_button "flight", flight.id, class: "radio" %></div>
+          <div class="media-content"><%= form.label "flight_#{flight.id}", format_flight(flight), class: "radio" %></div>
+        </div>
+      </div>
+      <br>
+    <% end %>
 
-      <tbody>
-          <% @search_results.each do |flight| %>
-            <tr>
-              <td><%= flight.departure_airport.code %></td>
-              <td><%= flight.departure_time.localtime.strftime("%H:%M %p") %></td>
-              <td><%= flight.arrival_airport.code %></td>
-              <td><%= flight.arrival_time.localtime.strftime("%H:%M %p") %></td>
-            </tr>
-          <% end %>
-      </tbody>
-    </table>
-
-    <%= form.submit "Book flight", class: "button" %>
+    <div class="control has-text-centered">
+      <%= form.submit "Book flight", class: "button" %>
+    </div>
   <% end %>
 
 </div>
