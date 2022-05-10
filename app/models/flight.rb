@@ -4,6 +4,7 @@ class Flight < ApplicationRecord
   has_many :bookings
   has_many :passengers, through: :bookings
 
+  scope :flight_details, ->(flight_id) { where("id = ?", flight_id )}
 
 
   def available_flights(params)

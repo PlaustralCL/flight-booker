@@ -1,13 +1,41 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
-<p><%= @flight %></p>
-<h2>Book your flight</h2>
+<div class="section">
 
-<div class="columns is-centered">
-  <div class="column is-half">
-    <% @flight[:passengers].to_i.times do |passenger| %>
-      <%= label :name, "Passenger name", class: "label" %>
-     <input type="text", class="input">
-    <% end %>
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <h2 class="title is-2">Book your flight</h2>
+      <h3 class="title is-3"><%= format_flight(@flight_details) %></h3>
+      <%= form_with model: @booking do |form| %>
+        <%= form.hidden_field(:flight_id, value: @flight_details[:id]) %>
+
+        <%= form.fields_for :passengers do |passenger_form| %>
+            <div class="level">
+              <div class="level-item">
+                <div class="field">
+                  <%= passenger_form.label :name, "Passenger name", class: "label" %>
+                  <%= passenger_form.text_field :name, class: "input" %>
+                </div>
+              </div>
+
+              <div class="level-item">
+                <div class="field">
+                  <%= passenger_form.label :email, "Passenger email", class: "label" %>
+                  <%= passenger_form.text_field :email, class: "input" %>
+                </div>
+
+              </div>
+            </div>
+
+        <% end %>
+
+        <div class="control">
+          <%= form.submit class: "button" %>
+        </div>
+
+      <% end %>
+    </div>
   </div>
 </div>
+
+
+
+
