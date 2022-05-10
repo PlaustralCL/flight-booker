@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   def new
-    @flight = params
     @num_passengers = params[:passengers]
     @flight_details = Flight.flight_details(params[:flight]).first
 
@@ -9,6 +8,18 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = Booking.new(booking_params)
 
+    if @booking.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:flight_id, passengers_attributes:[:id, :name, :email])
   end
 end
