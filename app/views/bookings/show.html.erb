@@ -5,8 +5,8 @@
 
       <div class="box">
         <h3 class="title is-3">Flight details</h3>
-        <p><span class="has-text-weight-bold">Depart:</span> <%= @booking.flight.departure_airport.city %> (<%= @booking.flight.departure_airport.code %>) at <%= @booking.flight.departure_time.localtime.strftime("%H:%M %p") %>
-        <p><span class="has-text-weight-bold">Arrive:</span> <%= @booking.flight.arrival_airport.city %> (<%= @booking.flight.arrival_airport.code %>) at <%= @booking.flight.arrival_time.localtime.strftime("%H:%M %p")%>
+        <p><span class="has-text-weight-bold">Depart:</span> <%= format_departure(@booking) %>
+        <p><span class="has-text-weight-bold">Arrive:</span> <%= format_arrival(@booking) %>
         <br>
         <br>
         <h3 class="title is-3">Passengers</h3>
