@@ -3,7 +3,13 @@
   <div class="columns is-centered">
     <div class="column is-half">
       <h2 class="title is-2">Book your flight</h2>
-      <h3 class="title is-3"><%= format_flight(@flight_details) %></h3>
+
+        <h3 class="title is-3">Flight details</h3>
+        <p><span class="has-text-weight-bold">Depart:</span> <%= flight_departure(@flight_details) %>
+        <p><span class="has-text-weight-bold">Arrive:</span> <%= flight_arrival(@flight_details) %>
+        <br>
+        <br>
+      <h3 class="title is-3">Passenger Information</h3>
       <%= form_with model: @booking do |form| %>
         <%= form.hidden_field(:flight_id, value: @flight_details[:id]) %>
 
@@ -11,15 +17,15 @@
             <div class="level">
               <div class="level-item">
                 <div class="field">
-                  <%= passenger_form.label :name, "Passenger name", class: "label" %>
-                  <%= passenger_form.text_field :name, class: "input" %>
+                  <%= passenger_form.label :name, "Passenger name", class: "label ml-2" %>
+                  <%= passenger_form.text_field :name, class: "input ml-2" %>
                 </div>
               </div>
 
               <div class="level-item">
                 <div class="field">
-                  <%= passenger_form.label :email, "Passenger email", class: "label" %>
-                  <%= passenger_form.text_field :email, class: "input" %>
+                  <%= passenger_form.label :email, "Passenger email", class: "label ml-4" %>
+                  <%= passenger_form.text_field :email, class: "input ml-4" %>
                 </div>
 
               </div>
