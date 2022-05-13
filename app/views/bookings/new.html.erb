@@ -4,14 +4,12 @@
     <div class="column is-half">
       <h2 class="title is-2">Book your flight</h2>
 
-        <h3 class="title is-3">Flight details</h3>
-        <p><span class="has-text-weight-bold">Depart:</span> <%= flight_departure(@flight_details) %>
-        <p><span class="has-text-weight-bold">Arrive:</span> <%= flight_arrival(@flight_details) %>
-        <br>
-        <br>
+
+      <%= render "flight_details", flight: @flight_info%>
+
       <h3 class="title is-3">Passenger Information</h3>
       <%= form_with model: @booking do |form| %>
-        <%= form.hidden_field(:flight_id, value: @flight_details[:id]) %>
+        <%= form.hidden_field(:flight_id, value: @flight_info[:id]) %>
 
         <%= form.fields_for :passengers do |passenger_form| %>
             <div class="level">
