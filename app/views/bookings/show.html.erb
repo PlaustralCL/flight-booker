@@ -5,12 +5,12 @@
 
       <div class="box">
         <h3 class="title is-3">Flight details</h3>
-        <p><span class="has-text-weight-bold">Depart:</span> <%= format_departure(@booking) %>
-        <p><span class="has-text-weight-bold">Arrive:</span> <%= format_arrival(@booking) %>
+        <p><span class="has-text-weight-bold">Depart:</span> <%= flight_departure(@booking) %>
+        <p><span class="has-text-weight-bold">Arrive:</span> <%= flight_arrival(@booking) %>
         <br>
         <br>
         <h3 class="title is-3">Passengers</h3>
-        <% @booking.flight.passengers.each_with_index do |passenger, index| %>
+        <% @booking.passengers.each_with_index do |passenger, index| %>
         <p><%= index + 1 %>. <%= passenger.name %></p>
         <% end %>
       </div>
