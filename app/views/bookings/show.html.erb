@@ -10,7 +10,8 @@
         <% @booking.passengers.each_with_index do |passenger, index| %>
         <p><%= index + 1 %>. <%= passenger.name %></p>
         <% end %>
-</div>
+      </div>
+      <%= link_to "New Search", root_path, class: "button" %>
     </div>
   </div>
 </div>
