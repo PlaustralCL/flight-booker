@@ -16,14 +16,14 @@
               <div class="level-item">
                 <div class="field">
                   <%= passenger_form.label :name, "Passenger name", class: "label ml-2" %>
-                  <%= passenger_form.text_field :name, class: "input ml-2" %>
+                  <%= passenger_form.text_field :name, required: true, class: "input ml-2" %>
                 </div>
               </div>
 
               <div class="level-item">
                 <div class="field">
                   <%= passenger_form.label :email, "Passenger email", class: "label ml-4" %>
-                  <%= passenger_form.text_field :email, class: "input ml-4" %>
+                  <%= passenger_form.text_field :email, required: true, class: "input ml-4" %>
                 </div>
 
               </div>
