@@ -13,6 +13,8 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to @booking
     else
+      @flight_info = @booking.flight
+      @travel_date = @booking.travel_date.to_date
       render :new, status: :unprocessable_entity
     end
   end

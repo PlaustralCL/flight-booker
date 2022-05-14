@@ -4,6 +4,16 @@
     <div class="column is-half">
       <h2 class="title is-2">Book your flight</h2>
 
+      <% if @booking.errors.any? %>
+        <div class="errors">
+          <p class="title is-4">Please correct the following errors:</p>
+          <ul>
+            <% @booking.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
       <%= render "flight_details",
                   locals: { flight: @flight_info, travel_date: @travel_date } %>
