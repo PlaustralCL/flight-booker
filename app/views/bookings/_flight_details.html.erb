@@ -1,5 +1,6 @@
 <h3 class="title is-3">Flight details</h3>
-<p><span class="has-text-weight-bold">Depart:</span> <%= flight_departure(flight) %>
-<p><span class="has-text-weight-bold">Arrive:</span> <%= flight_arrival(flight) %>
+<p><span class="has-text-weight-bold">Date:</span> <%= locals[:travel_date].strftime("%B %d, %Y") %>
+<p><span class="has-text-weight-bold">Depart:</span> <%= flight_departure(locals[:flight]) %>
+<p><span class="has-text-weight-bold">Arrive:</span> <%= flight_arrival(locals[:flight]) %>
 <br>
 <br>

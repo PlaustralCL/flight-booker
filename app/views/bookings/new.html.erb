@@ -5,11 +5,13 @@
       <h2 class="title is-2">Book your flight</h2>
 
 
-      <%= render "flight_details", flight: @flight_info%>
+      <%= render "flight_details",
+                  locals: { flight: @flight_info, travel_date: @travel_date } %>
 
       <h3 class="title is-3">Passenger Information</h3>
       <%= form_with model: @booking do |form| %>
         <%= form.hidden_field(:flight_id, value: @flight_info[:id]) %>
+        <%= form.hidden_field(:travel_date, value: @travel_date) %>
 
         <%= form.fields_for :passengers do |passenger_form| %>
             <div class="level">

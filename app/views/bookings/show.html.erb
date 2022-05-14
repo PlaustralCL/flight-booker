@@ -4,7 +4,8 @@
       <h2 class="title is-2">Booking Confirmation</h2>
 
       <div class="box">
-        <%= render "flight_details", flight: @booking.flight %>
+        <%= render "flight_details",
+                    locals: { flight: @booking.flight, travel_date: @booking.travel_date } %>
 
         <h3 class="title is-3">Passengers</h3>
         <% @booking.passengers.each_with_index do |passenger, index| %>

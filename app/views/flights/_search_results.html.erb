@@ -1,6 +1,8 @@
 <div class="section">
   <%= form_with url: new_booking_path, method: :get do |form| %>
     <%= hidden_field_tag "passengers", @search_criteria[:passengers] %>
+    <%= hidden_field_tag "travel_date", @search_criteria[:travel_date] %>
+
     <h2 class="title is-2">Available Flights</h2>
     <% @search_results.each do |flight| %>
       <div class="control">
