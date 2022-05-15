@@ -9,10 +9,22 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div class="hero has-background-info-light is-fullheight background">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="navbar-brand">
+            <div class="navbar-item">
+              <%= link_to "Flight Booker", root_path, class: "nav-logo" %>
+            </div>
+          </div>
+        </nav>
+      </div>
       <div class="hero-body">
         <div class="container">
 
