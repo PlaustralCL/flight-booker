@@ -8,8 +8,26 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    passenger_emails = []
+    passenger_params.each do |key, passenger|
+      passenger_emails << passenger[:email]
+    end
 
+
+    # @passenger.stop
+    # @booking = Booking.new(booking_params)
+    @booking = Booking.new(flight_id: booking_params[:flight_id], travel_date: booking_params[:travel_date])
+
+    passenger_emails.each do |email|
+      @passenger = Passenger.find_or_create_by(email: email)
+      @booking.passengers = @booking.passengers << @passenger
+    end
+    # @booking.stop
+
+
+    # @booking.passengers = @booking.passengers.map do |passenger|
+    #   Passenger.find_or_create_by(email: passenger.email)
+    # end
     if @booking.save
       redirect_to @booking
     else
@@ -27,5 +45,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:flight_id, :travel_date, passengers_attributes:[:id, :name, :email])
+  end
+
+  def passenger_params
+    booking_params[:passengers_attributes]
   end
 end
