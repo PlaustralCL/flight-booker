@@ -1,55 +1,42 @@
-<div class="section">
-  <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-half">
-          <h1 class="title is-1">Flight index</h1>
-
-          <div class="section">
-            <%= form_with model: @flights, method: :get do |form| %>
-              <h2 class="title is-2">Search Flights</h2>
-              <div class="level has-text-centered">
-                <div class="level-item">
-                  <div class="field">
-                    <%= form.label :departure_airport_id, "Origin", class: "label" %>
-                    <div class="select">
-                      <%= form.select(:departure_airport_id, options_for_select(@airport_options, @search_criteria[:departure_airport_id]), required: true) %>
-                    </div>
-                  </div>
-                </div>
-                <div class="level-item">
-                  <div class="field">
-                    <%= form.label :arrival_airport_id, "Destination", class: "label" %>
-                    <div class="select">
-                      <%= form.select(:arrival_airport_id, options_for_select(@airport_options, @search_criteria[:arrival_airport_id]), required: true) %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="level has-text-centered">
-                <div class="level-item">
-                  <div class="field">
-                    <%= form.label :passengers, "Number of passengers", class: "label" %>
-                    <div class="select">
-                      <%= form.select(:passengers, options_for_select([1, 2, 3, 4], @search_criteria[:passengers]), required: true) %>
-                    </div>
-                  </div>
-                </div>
-                <div class="level-item">
-                  <div class="field">
-                    <%= form.label :travel_date, "Travel date", class: "label" %>
-                    <%= form.date_field :travel_date, class: "select", value: @search_criteria[:travel_date], required: true %>
-                  </div>
-                </div>
-              </div>
-              <div class="control has-text-centered">
-                <%= form.submit "Search flights", class: "button" %>
-              </div>
-            <% end %>
-          </div>
-
-          <%= available_flights(@search_results) %>
-
+<%= form_with model: @flights, method: :get do |form| %>
+  <h2 class="title is-2">Search Flights</h2>
+  <div class="level has-text-centered">
+    <div class="level-item">
+      <div class="field">
+        <%= form.label :departure_airport_id, "Origin", class: "label" %>
+        <div class="select">
+          <%= form.select(:departure_airport_id, options_for_select(@airport_options, @search_criteria[:departure_airport_id]), required: true) %>
         </div>
       </div>
+    </div>
+    <div class="level-item">
+      <div class="field">
+        <%= form.label :arrival_airport_id, "Destination", class: "label" %>
+        <div class="select">
+          <%= form.select(:arrival_airport_id, options_for_select(@airport_options, @search_criteria[:arrival_airport_id]), required: true) %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="level has-text-centered">
+    <div class="level-item">
+      <div class="field">
+        <%= form.label :passengers, "Number of passengers", class: "label" %>
+        <div class="select">
+          <%= form.select(:passengers, options_for_select([1, 2, 3, 4], @search_criteria[:passengers]), required: true) %>
+        </div>
+      </div>
+    </div>
+    <div class="level-item">
+      <div class="field">
+        <%= form.label :travel_date, "Travel date", class: "label" %>
+        <%= form.date_field :travel_date, class: "select", value: @search_criteria[:travel_date], required: true %>
+      </div>
+    </div>
+  </div>
+  <div class="control has-text-centered">
+    <%= form.submit "Search flights", class: "button" %>
+  </div>
+<% end %>
+
+<%= available_flights(@search_results) %>

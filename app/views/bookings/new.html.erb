@@ -1,60 +1,53 @@
-<div class="section">
+<h2 class="title is-2">Book your flight</h2>
 
-  <div class="columns is-centered">
-    <div class="column is-half">
-      <h2 class="title is-2">Book your flight</h2>
-
-      <% if @booking.errors.any? %>
-        <div class="errors">
-          <p class="title is-4">Please correct the following errors:</p>
-          <ul>
-            <% @booking.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+<% if @booking.errors.any? %>
+  <div class="errors">
+    <p class="title is-4">Please correct the following errors:</p>
+    <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
-
-      <%= render "flight_details",
-                  locals: { flight: @flight_info, travel_date: @travel_date } %>
-
-      <h3 class="title is-3">Passenger Information</h3>
-      <%= form_with model: @booking do |form| %>
-        <%= form.hidden_field(:flight_id, value: @flight_info[:id]) %>
-        <%= form.hidden_field(:travel_date, value: @travel_date) %>
-
-        <%= form.fields_for :passengers do |passenger_form| %>
-            <div class="level">
-              <div class="level-item">
-                <div class="field">
-                  <%= passenger_form.label :name, "Passenger name", class: "label ml-2" %>
-                  <%= passenger_form.text_field :name, required: true, class: "input ml-2" %>
-                </div>
-              </div>
-
-              <div class="level-item">
-                <div class="field">
-                  <%= passenger_form.label :email, "Passenger email", class: "label ml-4" %>
-                  <%= passenger_form.text_field :email, required: true, class: "input ml-4" %>
-                </div>
-
-              </div>
-            </div>
-
-        <% end %>
-
-        <div class="control">
-          <%= form.submit class: "button" %>
-        </div>
-
-        <div class="mt-4" >
-          <%= link_to "Cancel", root_path %>
-        </div>
-
-      <% end %>
-    </div>
+    </ul>
   </div>
-</div>
+<% end %>
+
+<%= render "flight_details",
+            locals: { flight: @flight_info, travel_date: @travel_date } %>
+
+<h3 class="title is-3">Passenger Information</h3>
+<%= form_with model: @booking do |form| %>
+  <%= form.hidden_field(:flight_id, value: @flight_info[:id]) %>
+  <%= form.hidden_field(:travel_date, value: @travel_date) %>
+
+  <%= form.fields_for :passengers do |passenger_form| %>
+      <div class="level">
+        <div class="level-item">
+          <div class="field">
+            <%= passenger_form.label :name, "Passenger name", class: "label ml-2" %>
+            <%= passenger_form.text_field :name, required: true, class: "input ml-2" %>
+          </div>
+        </div>
+
+        <div class="level-item">
+          <div class="field">
+            <%= passenger_form.label :email, "Passenger email", class: "label ml-4" %>
+            <%= passenger_form.text_field :email, required: true, class: "input ml-4" %>
+          </div>
+
+        </div>
+      </div>
+
+  <% end %>
+
+  <div class="control">
+    <%= form.submit class: "button" %>
+  </div>
+
+  <div class="mt-4" >
+    <%= link_to "Cancel", root_path %>
+  </div>
+
+<% end %>
 
 
 
