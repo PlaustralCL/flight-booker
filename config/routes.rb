@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :flights, only: [:index]
   resources :bookings
 
+  get "/pages/:page" => "pages#show"
+
   root "flights#index"
 end
