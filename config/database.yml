@@ -83,7 +83,8 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  database: flight_booker_production
+  <<: *default
+  adapter: postgresql
   database: my_database_production
   pool: 5
   timeout: 5000
