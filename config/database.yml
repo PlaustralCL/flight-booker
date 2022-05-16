@@ -83,7 +83,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
   database: flight_booker_production
-  username: flight_booker
-  password: <%= ENV["FLIGHT_BOOKER_DATABASE_PASSWORD"] %>
+  database: my_database_production
+  pool: 5
+  timeout: 5000
