@@ -2,8 +2,9 @@
 
 ## Description
 A detailed description of the project is on [The Odin Project](https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker).
-The main goal of the project was to practice Rails associations, drop down
-selections, radio buttons, and nested forms.
+The main goal of the project was to practice Rails associations, drop down selections, radio buttons, and nested forms.
+
+[Live version on Heroku](https://obscure-inlet-69558.herokuapp.com/)
 
 ## Relfection
 The trickiest part was getting the Booking model to accept Passenger information
