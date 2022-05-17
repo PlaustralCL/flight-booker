@@ -7,7 +7,7 @@
     <% @search_results.each do |flight| %>
       <div class="control">
         <div class="media">
-          <div class="media-left"><%= form.radio_button "flight", flight.id, class: "radio" %></div>
+          <div class="media-left"><%= form.radio_button "flight", flight.id, required: true, class: "radio" %></div>
           <div class="media-content"><%= form.label "flight_#{flight.id}", format_flight(flight), class: "radio" %></div>
         </div>
       </div>
