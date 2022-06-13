@@ -19,19 +19,19 @@
   <%= form.hidden_field(:flight_id, value: @flight_info[:id]) %>
   <%= form.hidden_field(:travel_date, value: @travel_date) %>
 
-  <%= form.fields_for :passengers do |passenger_form| %>
+  <%= form.fields_for :passengers do |passenger_field| %>
       <div class="level">
         <div class="level-item">
           <div class="field">
-            <%= passenger_form.label :name, "Passenger name", class: "label ml-2" %>
-            <%= passenger_form.text_field :name, required: true, class: "input ml-2" %>
+            <%= passenger_field.label :name, "Passenger #{passenger_field.index + 1} name", class: "label ml-2" %>
+            <%= passenger_field.text_field :name, required: true, class: "input ml-2" %>
           </div>
         </div>
 
         <div class="level-item">
           <div class="field">
-            <%= passenger_form.label :email, "Passenger email", class: "label ml-4" %>
-            <%= passenger_form.text_field :email, required: true, class: "input ml-4" %>
+            <%= passenger_field.label :email, "Passenger #{passenger_field.index + 1} email", class: "label ml-4" %>
+            <%= passenger_field.text_field :email, required: true, class: "input ml-4" %>
           </div>
 
         </div>
