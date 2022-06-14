@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     end
 
     if @booking.save
+      PassengerMailer.confirmation_email.deliver_now
       redirect_to @booking
     else
       @flight_info = @booking.flight
