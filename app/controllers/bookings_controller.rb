@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     end
 
     if @booking.save
-      PassengerMailer.confirmation_email(booking_params, passenger_params["0"]).deliver_now
+      send_confirmation_email
       redirect_to @booking
     else
       @flight_info = @booking.flight
@@ -45,6 +45,12 @@ class BookingsController < ApplicationController
       passenger
     else
       Passenger.create(name: passenger_details[:name], email: passenger_details[:email])
+    end
+  end
+
+  def send_confirmation_email
+    passenger_params.each do |_key, passenger|
+      PassengerMailer.confirmation_email(booking_params, passenger).deliver_later
     end
   end
 end
