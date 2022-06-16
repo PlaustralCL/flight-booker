@@ -4,11 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user[:name] %></h1>
+
+    <h1><%= @passenger[:name] %>,  Welcome to flight-booker.com</h1>
+
     <p>
-      You have successfully booked a flight,
-      your email is: <%= @user[:email] %>.<br>
+      You have successfully booked the following flight:
+      <ul>
+        <li style="list-style: none">Date: <%= @travel_date %></li>
+        <li style="list-style: none">Depart: <%= @departure %></li>
+        <li style="list-style: none">Arrive: <%= @arrival %></li>
+      </ul>
     </p>
+
     <p>Thanks for booking your flight and have a great day!</p>
+
   </body>
 </html>
