@@ -24,6 +24,7 @@ Live preview: https://obscure-inlet-69558.herokuapp.com/
 * Customize the [[color palette|top.flight-booker.notes#color-palette]]
 * List departure and arrival times in the local (to the airport) timezones. Currently the times were shown relative to the user's timezone.
 * Add tests
+* Add email to production on Heroku
 
 ## Acknowledgements
 * Much of the CSS came from [Bulma](https://bulma.io/).
